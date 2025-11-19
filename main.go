@@ -1,7 +1,11 @@
+/*
+Copyright © 2025 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
-import "log"
+import "github.com/skarekroe666/secepp/cmd"
 
-func main()  {
-	log.Println("welcome to secepp")
+func main() {
+	cmd.Execute()
 }
