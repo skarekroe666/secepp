@@ -1,0 +1,60 @@
+application:
+  name: EmployeeManagementSystem
+  version: 2.5.3
+  environment: production
+  deploymentDate: 2024-11-01
+  maintenanceMode: false
+
+database:
+  host: db.company.internal
+  port: 5432
+  name: emp_db
+  maxConnections: 100
+  timeout: 30000
+  sslEnabled: true
+  backupSchedule: "0 2 * * *"
+
+api:
+  baseUrl: https://api.company.com/v1
+  timeout: 15000
+  retryAttempts: 3
+  rateLimitPerMinute: 1000
+  authenticationMethod: OAuth2
+  enableCORS: true
+  allowedOrigins:
+    - https://app.company.com
+    - https://admin.company.com
+
+email:
+  smtpHost: smtp.company.com
+  smtpPort: 587
+  senderEmail: noreply@company.com
+  senderName: Employee Portal
+  enableTLS: true
+  templatesPath: /templates/email
+
+security:
+  jwtSecretKey: "***REDACTED***"
+  tokenExpiryMinutes: 60
+  passwordMinLength: 8
+  requireSpecialCharacters: true
+  sessionTimeout: 1800
+  maxLoginAttempts: 5
+  lockoutDurationMinutes: 30
+
+features:
+  enableNotifications: true
+  enableFileUpload: true
+  maxFileUploadSizeMB: 10
+  enableAnalytics: true
+  enableChatSupport: false
+  maintenanceWindowStart: "02:00"
+  maintenanceWindowEnd: "04:00"
+
+logging:
+  level: info
+  enableConsoleOutput: true
+  enableFileOutput: true
+  logFilePath: /var/log/app/
+  maxLogFileSizeMB: 50
+  logRotationDays: 30

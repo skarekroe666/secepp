@@ -1,0 +1,64 @@
+{
+    "employees": [
+        {
+            "employeeId": "EMP001",
+            "firstName": "Rajesh",
+            "lastName": "Kumar",
+            "email": "rajesh.kumar@company.com",
+            "phone": "+91-9876543210",
+            "department": "Engineering",
+            "position": "Senior Software Engineer",
+            "dateOfJoining": "2020-03-15",
+            "salary": 1200000,
+            "isActive": true,
+            "skills": [
+                "Java",
+                "Spring Boot",
+                "Microservices",
+                "AWS"
+            ],
+            "manager": "EMP045",
+            "location": "Pune"
+        },
+        {
+            "employeeId": "EMP002",
+            "firstName": "Priya",
+            "lastName": "Sharma",
+            "email": "priya.sharma@company.com",
+            "phone": "+91-9876543211",
+            "department": "Marketing",
+            "position": "Marketing Manager",
+            "dateOfJoining": "2019-07-22",
+            "salary": 950000,
+            "isActive": true,
+            "skills": [
+                "Digital Marketing",
+                "SEO",
+                "Content Strategy",
+                "Analytics"
+            ],
+            "manager": "EMP023",
+            "location": "Mumbai"
+        },
+        {
+            "employeeId": "EMP003",
+            "firstName": "Amit",
+            "lastName": "Patel",
+            "email": "amit.patel@company.com",
+            "phone": "+91-9876543212",
+            "department": "Human Resources",
+            "position": "HR Specialist",
+            "dateOfJoining": "2021-01-10",
+            "salary": 650000,
+            "isActive": true,
+            "skills": [
+                "Recruitment",
+                "Employee Relations",
+                "HRMS",
+                "Compliance"
+            ],
+            "manager": "EMP012",
+            "location": "Bangalore"
+        }
+    ]
+}
