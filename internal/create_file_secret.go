@@ -3,25 +3,62 @@ package internal
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"os"
+
+	"github.com/manifoldco/promptui"
 )
 
-func CreateSecret(fileName string) {
-	filePath := "files/" + fileName
+// UNCOMMENT THIS FUNCTION TO GET A SIMPLE CLI INPUT AND RESPONSE
+// NOTE: FOR THIS FUNCTION USE THE COMMAND AND ENTER FILE NAME AS THE SAME ARGS
+// AND UNCOMMENT THE FILENAME CHECK IN cmd/crete.go
 
-	_, err := os.Stat(filePath)
+// func CreateSecret(fileName string) {
+// 	filePath := "files/" + fileName
+//
+// 	_, err := os.Stat(filePath)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+//
+// 	hash, err := getFileHash(filePath)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	fmt.Println("Here's your secret file:", hash)
+// }
+
+
+// THIS FUNCTION USES A UI LIBRARY TO FOR AN INTERACTIVE EXPERIENCE
+func CreateSecret() {
+	userInput := func(input string) error {
+		if input == "" {
+			return errors.New("please mention file name")
+		} else {
+			return nil
+		}
+	}
+
+	prompt := promptui.Prompt{
+		Label:    "Enter file name",
+		Validate: userInput,
+	}
+
+	result, err := prompt.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	filePath := "files/" + result
 
 	hash, err := getFileHash(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Here's your secret file:", hash)
+	fmt.Println("Here's your secret:", hash)
 }
 
 func getFileHash(filePath string) (string, error) {

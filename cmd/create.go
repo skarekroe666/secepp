@@ -9,17 +9,13 @@ var hashCmd = &cobra.Command{
 	Use:   "create [command]",
 	Short: "create a secret for a file",
 	Run: func(cmd *cobra.Command, args []string) {
-		fileName := ""
-		if len(args) == 1 {
-			fileName = args[0]
-		}
-		internal.CreateSecret(fileName)
+		// fileName := ""
+		// if len(args) == 1 {
+		// 	fileName = args[0]
+		// }
+		internal.CreateSecret()
 	},
 }
-
-// func create() {
-// 	fmt.Println("Enter file name")
-// }
 
 func init() {
 	rootCmd.AddCommand(hashCmd)
