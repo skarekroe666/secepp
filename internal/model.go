@@ -8,7 +8,7 @@ import (
 
 type Secret struct {
 	gorm.Model
-	Hash      string
-	FileName  string
+	Hash      string    `gorm:"hash"`
+	FileName  string    `gorm:"filename"`
 	CreatedAt time.Time `gorm:"autoCreateTime"`
 }

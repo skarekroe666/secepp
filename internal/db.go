@@ -3,15 +3,32 @@ package internal
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"gorm.io/driver/sqlite"
+	"github.com/joho/godotenv"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
+func loadEnv() (string, error) {
+	if err := godotenv.Load(); err != nil {
+		return "", fmt.Errorf("failed to load .env file")
+	}
+
+	url := os.Getenv("DB_URL")
+
+	return url, nil
+}
+
 func InitDB() {
-	db, err := gorm.Open(sqlite.Open("secrets.db"), &gorm.Config{})
+	dbUrl, err := loadEnv()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	db, err := gorm.Open(postgres.Open(dbUrl), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database", err)
 	}
@@ -21,7 +38,7 @@ func InitDB() {
 		log.Fatal("failed to migrate to database")
 	}
 
-	fmt.Println("migrated successfully")
+	// fmt.Println("migrated successfully")
 
 	DB = db
 }

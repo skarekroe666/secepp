@@ -13,9 +13,9 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-// UNCOMMENT THIS FUNCTION TO GET A SIMPLE CLI INPUT AND RESPONSE
-// NOTE: FOR THIS FUNCTION USE THE COMMAND AND ENTER FILE NAME AS THE SAME ARGS
-// AND UNCOMMENT THE FILENAME CHECK IN cmd/crete.go
+/* UNCOMMENT THIS FUNCTION TO GET A SIMPLE CLI INPUT AND RESPONSE
+NOTE: FOR THIS FUNCTION USE THE COMMAND AND ENTER FILE NAME AS THE SAME ARGS
+AND UNCOMMENT THE FILENAME CHECK IN cmd/crete.go */
 
 // func CreateSecret(fileName string) {
 // 	filePath := "files/" + fileName
@@ -66,12 +66,11 @@ func CreateSecret() {
 		CreatedAt: time.Now(),
 	}
 
-	DB.Create(&output)
-
 	fmt.Println()
 	fmt.Printf("Here's your hash: %s\n", output.Hash)
 	fmt.Printf("File name: %s\n", output.FileName)
 	fmt.Printf("Created at: %s\n", output.CreatedAt.Format(time.UnixDate))
+	DB.Create(&output)
 }
 
 func getFileHash(filePath string) (string, error) {

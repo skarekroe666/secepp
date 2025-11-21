@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
-	cmd.Execute()
+	// Initialize DB before executing commands so commands can use DB
 	internal.InitDB()
+	cmd.Execute()
 }
