@@ -6,7 +6,7 @@ import (
 )
 
 var hashCmd = &cobra.Command{
-	Use:   "create [command]",
+	Use:   "create",
 	Short: "create a secret for a file",
 	Run: func(cmd *cobra.Command, args []string) {
 		// fileName := ""

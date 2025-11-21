@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"time"
 
 	"github.com/manifoldco/promptui"
 )
@@ -30,7 +31,6 @@ import (
 // 	}
 // 	fmt.Println("Here's your secret file:", hash)
 // }
-
 
 // THIS FUNCTION USES A UI LIBRARY TO FOR AN INTERACTIVE EXPERIENCE
 func CreateSecret() {
@@ -58,7 +58,20 @@ func CreateSecret() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Here's your secret:", hash)
+	// fmt.Println("Here's your secret:", hash)
+
+	output := Secret{
+		Hash:      hash,
+		FileName:  result,
+		CreatedAt: time.Now(),
+	}
+
+	DB.Create(&output)
+
+	fmt.Println()
+	fmt.Printf("Here's your hash: %s\n", output.Hash)
+	fmt.Printf("File name: %s\n", output.FileName)
+	fmt.Printf("Created at: %s\n", output.CreatedAt.Format(time.UnixDate))
 }
 
 func getFileHash(filePath string) (string, error) {
