@@ -1,0 +1,7 @@
+services:
+  secepp:
+    image: secepp
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: secepp

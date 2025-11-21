@@ -12,7 +12,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "secepp",
-	Short: "A brief description of your application",
+	Short: "A simple local secret manager",
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
 

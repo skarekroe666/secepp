@@ -32,7 +32,8 @@ func DeleteSecret() {
 	if err := DB.Where("hash = ?", result).First(&input).Error; err != nil {
 		log.Fatal(err)
 	}
-	DB.Delete(&input)
+	// DB.Delete(&input)
+	DB.Unscoped().Delete(&input)
 
 	fmt.Println("Secret deleted successfully")
 }

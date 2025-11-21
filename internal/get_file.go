@@ -28,9 +28,6 @@ func GetFile() {
 		return
 	}
 
-	// input := strings.Split(result, ".")
-	// fmt.Println(input)
-
 	var inputSecret Secret
 	if err := DB.Where("file_name = ?", result).First(&inputSecret).Error; err != nil {
 		log.Fatal(err)
@@ -39,5 +36,6 @@ func GetFile() {
 	fmt.Printf("Id: %d\n", inputSecret.ID)
 	fmt.Printf("Hash: %s\n", inputSecret.Hash)
 	fmt.Printf("Filename: %s\n", inputSecret.FileName)
+	fmt.Printf("CreatedAt: %s\n", inputSecret.CreatedAt)
 	fmt.Println()
 }
